@@ -8,19 +8,12 @@ pipeline {
         DOCKER_TAG = getVersion()
     }
     stages {
-        stage('Docker Build') {
+        stage ('Clone Stage') {
             steps {
-                sh 'docker build -t menyar12/aston_villa:${DOCKER_TAG} .'
+                git'https://github.com/MenyarAdali/Astonvilla.git'
             }
         }
-        stage('DockerHub Push') {
-            steps {
-                sh 'sudo docker login -u minyaradali@gmail.com -p 11994219min@'
-                sh 'sudo docker push menyar12/aston_villa:${DOCKER_TAG}'
-            }
-        }
-
-            
+      
     }
 }
 
